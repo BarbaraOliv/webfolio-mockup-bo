@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<!--
+  WEBFÓLIO TEMPLATE — mockup v1
+  ─────────────────────────────
+  CAMADA 1 (estrutura fixa, igual pra todo creator): a ordem das seções, o grid,
+  os componentes e o CSS abaixo. Isso NÃO muda de pessoa pra pessoa.
+  CAMADA 2 (o que muda por creator): o objeto `CREATOR`, no topo do <script> no
+  final do arquivo, com todo o conteúdo (nome, bio, cases, formatos etc.) — e o
+  seletor de TEMA flutuante no canto da tela, que troca cor + fontes + fundo.
+  Pra gerar o webfólio de outro creator: troca o objeto CREATOR e escolhe o tema.
+-->
+<html lang="pt-BR" data-theme="editorial">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marina Costa — Webfólio Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     CAMADA 2 — TOKENS DE TEMA (trocam ao vivo via [data-theme])
+     ============================================================ */
+  :root,
+  html[data-theme="editorial"] {
+    --bg: #faf7f2;
+    --bg-alt: #f1ebe1;
+    --fg: #1c1917;
+    --fg-soft: #5c5650;
+    --accent: #a8442b;
+    --accent-fg: #fff8f0;
+    --line: rgba(28,25,23,0.12);
+    --card-bg: #ffffff;
+    --hero-tint: linear-gradient(155deg,#3a3229 0%,#8a5a3f 45%,#c98a5a 78%,#e7b78a 100%);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+    --display-style: normal;
+    --radius-sm: 3px;
+    --radius-md: 10px;
+    --radius-lg: 22px;
+    --shadow-card: 0 1px 2px rgba(28,25,23,0.04), 0 12px 32px -16px rgba(28,25,23,0.18);
+  }
+  html[data-theme="luxo"] {
+    --bg: #0c0b0a;
+    --bg-alt: #151311;
+    --fg: #f3ede0;
+    --fg-soft: #b8ab94;
+    --accent: #cc9c53;
+    --accent-fg: #14110a;
+    --line: rgba(243,237,224,0.14);
+    --card-bg: #17140f;
+    --hero-tint: linear-gradient(160deg,#050403 0%,#231c10 40%,#4a3a17 70%,#cc9c53 130%);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+    --display-style: italic;
+    --radius-sm: 2px;
+    --radius-md: 6px;
+    --radius-lg: 14px;
+    --shadow-card: 0 1px 0 rgba(204,156,83,0.08), 0 20px 48px -20px rgba(0,0,0,0.7);
+  }
+  html[data-theme="quente"] {
+    --bg: #fff6ec;
+    --bg-alt: #ffe9d6;
+    --fg: #3c2a1e;
+    --fg-soft: #8a6a54;
+    --accent: #e2734a;
+    --accent-fg: #fff8f0;
+    --line: rgba(60,42,30,0.10);
+    --card-bg: #fffdfa;
+    --hero-tint: linear-gradient(150deg,#f6b48c 0%,#f2916b 45%,#e56b6f 78%,#f6d365 120%);
+    --font-display: 'Quicksand', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --display-style: normal;
+    --radius-sm: 10px;
+    --radius-md: 22px;
+    --radius-lg: 36px;
+    --shadow-card: 0 2px 4px rgba(60,42,30,0.05), 0 16px 36px -18px rgba(226,115,74,0.35);
+  }
+
+  /* ============================================================
+     CAMADA 1 — RESET & FUNDAÇÃO
+     ============================================================ */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .5s ease, color .5s ease;
+    overflow-x: hidden;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  h1,h2,h3 { font-family: var(--font-display); font-style: var(--display-style); font-weight: 500; margin: 0; letter-spacing: -0.01em; }
+  p { margin: 0; }
+
+  .noise {
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: .035; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  html[data-theme="luxo"] .noise { opacity: .06; mix-blend-mode: overlay; }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); }
+
+  /* ---------- NAV ---------- */
+  #nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(140%);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    border-bottom: 1px solid var(--line);
+    transition: background .5s ease, border-color .5s ease;
+  }
+  .nav-inner { max-width: 1240px; margin: 0 auto; padding: 16px clamp(20px,4vw,64px); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .nav-logo { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.01em; white-space: nowrap; }
+  .nav-links { display: flex; gap: 28px; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg-soft); }
+  .nav-links a { position: relative; padding: 4px 0; transition: color .25s; }
+  .nav-links a:hover { color: var(--fg); }
+  .nav-links a::after { content:''; position:absolute; left:0; right:0; bottom:-2px; height:1px; background:var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .btn-nav {
+    border: 1px solid var(--fg); padding: 9px 20px; border-radius: var(--radius-sm);
+    font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap;
+    transition: background .25s, color .25s, border-color .25s;
+  }
+  .btn-nav:hover { background: var(--fg); color: var(--bg); }
+  .nav-toggle { display: none; }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: clamp(40px,6vw,72px) 0 clamp(40px,6vw,72px); position: relative; }
+  .hero-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: minmax(220px,300px) 1fr; gap: clamp(32px,6vw,80px); align-items: center; }
+  .hero-portrait { position: relative; }
+  .portrait-block {
+    aspect-ratio: 4/5; border-radius: var(--radius-lg); background: var(--hero-tint);
+    position: relative; overflow: hidden; box-shadow: var(--shadow-card);
+  }
+  .portrait-block::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 55%);
+  }
+  .portrait-label {
+    position: absolute; left: 16px; bottom: 16px; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.86); background: rgba(0,0,0,0.28); padding: 6px 12px; border-radius: 100px; backdrop-filter: blur(6px);
+  }
+  .eyebrow { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-soft); display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
+  .eyebrow .dot { opacity: .4; }
+  .hero-copy h1 { font-size: clamp(2.6rem,5.6vw,4.6rem); line-height: 0.98; margin-bottom: 14px; }
+  .headline { font-size: clamp(1.05rem,1.6vw,1.3rem); color: var(--fg-soft); max-width: 46ch; margin-bottom: 28px; }
+  .stats-strip { display: flex; flex-wrap: wrap; gap: 10px 28px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 32px; }
+  .stat-item { font-size: 0.86rem; color: var(--fg-soft); }
+  .stat-item strong { color: var(--fg); font-family: var(--font-display); font-size: 1.05rem; margin-right: 6px; }
+  .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px; background: var(--accent); color: var(--accent-fg);
+    padding: 15px 30px; border-radius: var(--radius-sm); font-size: 0.88rem; letter-spacing: 0.03em; font-weight: 500;
+    transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s cubic-bezier(.16,1,.3,1);
+    box-shadow: 0 8px 22px -10px color-mix(in srgb, var(--accent) 70%, transparent);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px color-mix(in srgb, var(--accent) 80%, transparent); }
+  .btn-primary.large { padding: 18px 38px; font-size: 0.95rem; }
+  .socials { display: flex; gap: 14px; }
+  .socials .icon-btn { width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--fg-soft); transition: all .25s; }
+  .socials .icon-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .socials svg { width: 16px; height: 16px; }
+
+  /* ---------- SECTION shell ---------- */
+  .section { padding: clamp(32px,5vw,64px) 0; position: relative; }
+  .section-head { max-width: 1240px; margin: 0 auto clamp(24px,3.5vw,36px); padding: 0 clamp(20px,4vw,64px); display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+  .section-index { font-family: var(--font-display); font-size: 0.85rem; color: var(--accent); border: 1px solid var(--accent); border-radius: 100px; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-head h2 { font-size: clamp(1.9rem,3.4vw,2.9rem); }
+  .section-note { flex-basis: 100%; color: var(--fg-soft); font-size: 0.95rem; margin-top: 4px; }
+  .section-note.inline { flex-basis: auto; margin-top: 0; margin-left: auto; font-size: 0.85rem; }
+
+  /* ---------- HEADLINE NICHE (destaque) ---------- */
+  .headline-niche { color: var(--accent); font-weight: 500; }
+
+  /* ---------- PORTFÓLIO (cases pagos) ---------- */
+  .cases-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+  .case-card { background: var(--card-bg); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); transition: transform .4s cubic-bezier(.16,1,.3,1); }
+  .case-card:hover { transform: translateY(-6px); }
+  .case-card:nth-child(3n+2) { margin-top: 44px; }
+  .case-thumb { aspect-ratio: 4/5; position: relative; overflow: hidden; }
+  .case-thumb::after { content: attr(data-label); position: absolute; left: 14px; bottom: 14px; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 100px; backdrop-filter: blur(4px); }
+  .case-body { padding: 18px 20px 22px; }
+  .case-brand { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-soft); margin-bottom: 6px; }
+  .case-format { font-family: var(--font-display); font-size: 1rem; color: var(--fg-soft); margin-bottom: 14px; }
+  .case-metric { font-family: var(--font-display); font-size: 1.2rem; color: var(--accent); font-weight: 500; padding-top: 12px; border-top: 1px solid var(--line); }
+
+  /* ---------- VITRINE AUTORAL (scroll horizontal) ---------- */
+  .autoral-scroll { display: flex; gap: 22px; overflow-x: auto; padding: 4px clamp(20px,4vw,64px) 20px; scroll-snap-type: x proximity; scrollbar-width: thin; }
+  .autoral-scroll::-webkit-scrollbar { height: 5px; }
+  .autoral-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
+  .autoral-item { flex: 0 0 clamp(210px,26vw,300px); scroll-snap-align: start; }
+  .autoral-thumb { aspect-ratio: 9/16; border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: var(--shadow-card); -webkit-mask-image: -webkit-radial-gradient(white, black); mask-image: radial-gradient(white, black); }
+  .autoral-thumb-inner { position: absolute; inset: 0; transition: transform .4s cubic-bezier(.16,1,.3,1); }
+  .autoral-thumb:hover .autoral-thumb-inner { transform: scale(1.08) rotate(-0.6deg); }
+  .autoral-thumb-inner::after { content: attr(data-label); position: absolute; left: 12px; bottom: 12px; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 100px; }
+  .autoral-title { margin-top: 12px; font-size: 0.9rem; font-weight: 500; }
+  .autoral-type { font-size: 0.78rem; color: var(--fg-soft); }
+
+  /* ---------- FORMATOS ---------- */
+  .formatos-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+  .formato-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: center; gap: 14px; transition: border-color .3s, transform .3s; }
+  .formato-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .formato-icon { width: 34px; height: 34px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .formato-icon svg { width: 16px; height: 16px; }
+  .formato-text { min-width: 0; }
+  .formato-title { font-family: var(--font-display); font-size: 0.98rem; margin-bottom: 2px; }
+  .formato-desc { font-size: 0.78rem; color: var(--fg-soft); line-height: 1.4; }
+
+  /* ---------- BASTIDORES ---------- */
+  .estudio-card { max-width: 1240px; margin: 0 auto; padding: clamp(28px,4vw,44px); background: var(--card-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+  .estudio-col-title { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-soft); margin-bottom: 18px; }
+  .estudio-row { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .estudio-row:last-child { border-bottom: none; }
+  .estudio-row svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
+
+  /* ---------- DEPOIMENTOS ---------- */
+  .rating-agg { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.4rem; margin-left: auto; }
+  .rating-agg .stars { color: var(--accent); font-size: 1rem; letter-spacing: 2px; }
+  .depoimentos-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+  .dep-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 26px 22px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 16px; }
+  .dep-card:nth-child(odd) { transform: translateY(18px); }
+  .dep-quote { font-size: 0.92rem; line-height: 1.55; flex-grow: 1; }
+  .dep-quote::before { content: '“'; color: var(--accent); font-family: var(--font-display); font-size: 1.6rem; line-height: 0; display: block; margin-bottom: 4px; }
+  .dep-brand { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: var(--fg-soft); border-top: 1px solid var(--line); padding-top: 12px; gap: 10px; }
+  .dep-who { display: flex; align-items: center; gap: 8px; }
+  .dep-logo { width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 14%, var(--card-bg)); color: var(--accent); font-family: var(--font-display); font-size: 0.66rem; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .dep-stars { color: var(--accent); letter-spacing: 1px; }
+
+  /* ---------- DESEMPENHO ---------- */
+  .metrics-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .metric-tile { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 34px 26px; }
+  .metric-num { font-family: var(--font-display); font-size: clamp(2.2rem,4vw,3rem); color: var(--accent); line-height: 1; margin-bottom: 10px; }
+  .metric-label { font-size: 0.82rem; color: var(--fg-soft); }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final { text-align: center; }
+  .cta-final h2 { font-size: clamp(2.4rem,5.5vw,4.4rem); margin-bottom: 18px; }
+  .cta-final p { color: var(--fg-soft); font-size: 1.05rem; max-width: 46ch; margin: 0 auto 34px; }
+  .cta-final .btn-primary { margin-bottom: 20px; }
+  .contact-email { font-size: 0.85rem; color: var(--fg-soft); }
+
+  /* ---------- FOOTER ---------- */
+  .footer { border-top: 1px solid var(--line); padding: 28px 0; }
+  .footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.78rem; color: var(--fg-soft); }
+
+  /* ---------- THEME SWITCHER ---------- */
+  .theme-switcher {
+    position: fixed; bottom: 22px; left: 22px; z-index: 60;
+    display: flex; align-items: center; gap: 10px;
+    background: color-mix(in srgb, var(--card-bg) 88%, transparent);
+    border: 1px solid var(--line); border-radius: 100px; padding: 8px 14px 8px 16px;
+    box-shadow: var(--shadow-card); backdrop-filter: blur(10px);
+  }
+  .theme-label { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-soft); }
+  .theme-switcher button {
+    width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; padding: 0;
+    outline-offset: 3px; transition: transform .2s ease, border-color .2s ease; position: relative;
+  }
+  .theme-switcher button:hover { transform: scale(1.12); }
+  .theme-switcher button.active { border-color: var(--fg); }
+  .theme-switcher button[data-theme-btn="editorial"] { background: linear-gradient(135deg,#faf7f2 50%,#a8442b 50%); }
+  .theme-switcher button[data-theme-btn="luxo"] { background: linear-gradient(135deg,#0c0b0a 50%,#cc9c53 50%); }
+  .theme-switcher button[data-theme-btn="quente"] { background: linear-gradient(135deg,#fff6ec 50%,#e2734a 50%); }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: repeat(2,1fr); }
+    .case-card:nth-child(3n+2) { margin-top: 0; }
+    .formatos-grid { grid-template-columns: repeat(2,1fr); }
+    .estudio-card { grid-template-columns: repeat(2,1fr); }
+    .depoimentos-grid { grid-template-columns: repeat(2,1fr); }
+    .dep-card:nth-child(odd) { transform: none; }
+    .metrics-grid { grid-template-columns: repeat(2,1fr); }
+    .theme-switcher { left: 12px; bottom: 12px; }
+  }
+  @media (max-width: 560px) {
+    .cases-grid { grid-template-columns: 1fr; }
+    .formatos-grid { grid-template-columns: 1fr; }
+    .estudio-card { grid-template-columns: 1fr; gap: 26px; }
+    .depoimentos-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: repeat(2,1fr); }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .btn-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top" data-field="navName">—</a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#autoral">Autoral</a></li>
+      <li><a href="#marcas">Marcas</a></li>
+      <li><a href="#formatos">Formatos</a></li>
+      <li><a href="#bastidores">Bastidores</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a class="btn-nav" href="#contato">Contratar</a>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="hero-grid">
+    <div class="hero-portrait reveal">
+      <div class="portrait-block">
+        <span class="portrait-label">foto da creator · slot substituível</span>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <p class="eyebrow" id="heroEyebrow"></p>
+      <h1 data-field="name">—</h1>
+      <p class="headline"><span data-field="headline"></span> · <span class="headline-niche" data-field="headlineNiche"></span></p>
+      <div class="stats-strip" id="heroStats"></div>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#contato" id="heroCtaBtn">Contratar</a>
+        <div class="socials" id="socialIcons"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="portfolio" class="section">
+  <div class="section-head reveal">
+    <span class="section-index">01</span>
+    <h2>Portfólio profissional</h2>
+    <p class="section-note">Trabalhos entregues para marcas parceiras.</p>
+  </div>
+  <div class="cases-grid" id="casesGrid"></div>
+</section>
+
+<section id="autoral" class="section">
+  <div class="section-head reveal">
+    <span class="section-index">02</span>
+    <h2>Vitrine autoral</h2>
+    <p class="section-note">Conteúdo próprio</p>
+  </div>
+  <div class="autoral-scroll" id="autoralScroll"></div>
+</section>
+
+<section id="marcas" class="section">
+  <div class="section-head reveal">
+    <span class="section-index">03</span>
+    <h2>O que as marcas dizem</h2>
+    <div class="rating-agg" id="ratingAgg"></div>
+  </div>
+  <div class="depoimentos-grid" id="depoimentosGrid"></div>
+</section>
+
+<section id="formatos" class="section">
+  <div class="section-head reveal">
+    <span class="section-index">04</span>
+    <h2>Formatos que entrego</h2>
+  </div>
+  <div class="formatos-grid" id="formatosGrid"></div>
+</section>
+
+<section id="bastidores" class="section">
+  <div class="section-head reveal">
+    <span class="section-index">05</span>
+    <h2>Bastidores</h2>
+  </div>
+  <div class="estudio-card reveal">
+    <div class="estudio-col">
+      <p class="estudio-col-title">Cenários</p>
+      <div id="estudioCenarios"></div>
+    </div>
+    <div class="estudio-col">
+      <p class="estudio-col-title">Equipamentos</p>
+      <div id="estudioEquip"></div>
+    </div>
+    <div class="estudio-col">
+      <p class="estudio-col-title">Elenco de apoio</p>
+      <div id="estudioElenco"></div>
+    </div>
+    <div class="estudio-col">
+      <p class="estudio-col-title">Logística</p>
+      <div id="estudioLogistica"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head reveal">
+    <span class="section-index">06</span>
+    <h2>Desempenho</h2>
+  </div>
+  <div class="metrics-grid" id="metricsGrid"></div>
+</section>
+
+<section id="contato" class="section cta-final reveal">
+  <h2>Vamos trabalhar juntos?</h2>
+  <a class="btn-primary large" href="#" id="ctaMailBtn">Contratar Marina</a>
+  <p class="contact-email" data-field="email"></p>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>© <span id="year"></span> <span data-field="name2"></span> · Template webfólio — conteúdo fictício para demonstração</p>
+    <p>Camada 1: estrutura fixa · Camada 2: conteúdo &amp; tema por creator</p>
+  </div>
+</footer>
+
+<div class="theme-switcher" id="themeSwitcher">
+  <span class="theme-label">Tema</span>
+  <button data-theme-btn="editorial" class="active" title="Editorial claro" aria-label="Editorial claro"></button>
+  <button data-theme-btn="luxo" title="Luxo escuro" aria-label="Luxo escuro"></button>
+  <button data-theme-btn="quente" title="Lifestyle quente" aria-label="Lifestyle quente"></button>
+</div>
+
+<script>
+/* ============================================================
+   CAMADA 2 — CONTEÚDO POR CREATOR
+   Tudo abaixo é o que muda de pessoa pra pessoa. Pra gerar o
+   webfólio de outro creator, troca só este objeto — o HTML/CSS
+   acima (Camada 1) permanece idêntico.
+   ============================================================ */
+const CREATOR = {
+  name: "Marina Costa",
+  navName: "Marina Costa",
+  headline: "Creator UGC",
+  headlineNiche: "Lifestyle & Beauty",
+  location: "São Paulo, BR",
+  age: "28 anos",
+  languages: "PT · EN · ES",
+  stats: [
+    { value: "48", label: "jobs entregues" },
+    { value: "4.9★", label: "avaliação média" },
+    { value: "2h", label: "tempo de resposta" },
+    { value: "14 sem.", label: "criando na Publi Secrets" },
+  ],
+  socials: [
+    { key: "instagram", label: "Instagram" },
+    { key: "tiktok", label: "TikTok" },
+    { key: "youtube", label: "YouTube" },
+    { key: "shop", label: "Loja" },
+  ],
+  cases: [
+    { brand: "Lumière Cosméticos", format: "Reels de produto", metric: "+120k views", tone: "warm" },
+    { brand: "Casa Nova Studio", format: "Unboxing", metric: "8.4% engajamento", tone: "cool" },
+    { brand: "Vita Fit Suplementos", format: "Depoimento em vídeo", metric: "+64k views", tone: "warm2" },
+    { brand: "Nômade Eletrônicos", format: "Review de produto", metric: "3.2x CTR médio", tone: "dark" },
+    { brand: "Sabor de Casa", format: "Tutorial culinário", metric: "+95k views", tone: "cool2" },
+    { brand: "Verde Skincare", format: "Antes & depois", metric: "9.1% engajamento", tone: "warm" },
+  ],
+  autoral: [
+    { title: "Rotina de skincare noturna", type: "Reel autoral", tone: "warm" },
+    { title: "Organizando o closet cápsula", type: "Story série", tone: "cool" },
+    { title: "5 receitas de domingo", type: "Vídeo longo", tone: "dark" },
+    { title: "Look do dia — inverno", type: "Reel autoral", tone: "cool2" },
+  ],
+  formats: [
+    { icon: "box", title: "Unboxing", desc: "Abertura e primeira impressão do produto, com reação genuína." },
+    { icon: "star", title: "Review", desc: "Avaliação detalhada de uso, prós e contras, comparação de mercado." },
+    { icon: "play", title: "Tutorial", desc: "Passo a passo de uso ou aplicação, formato educativo." },
+    { icon: "mic", title: "Voz off", desc: "Narração profissional para vídeos institucionais e VSLs." },
+    { icon: "scissors", title: "Edição", desc: "Corte, ritmo e legendas prontos para publicação direta." },
+    { icon: "chat", title: "Depoimento", desc: "Testemunho autêntico em formato de conversa com a câmera." },
+  ],
+  studio: {
+    cenarios: [
+      { icon: "home", label: "Casa (sala, cozinha, quarto)" },
+      { icon: "wave", label: "Praia / área externa" },
+      { icon: "briefcase", label: "Escritório / estúdio" },
+    ],
+    equipamentos: [
+      { icon: "ring", label: "Ringlight profissional" },
+      { icon: "camera", label: "Câmera mirrorless 4K" },
+      { icon: "mic2", label: "Microfone lapela sem fio" },
+      { icon: "tripod", label: "Tripé & estabilizador" },
+    ],
+    elenco: [
+      { icon: "paw", label: "Pet (golden retriever)" },
+      { icon: "users", label: "Participação da família" },
+    ],
+    logistica: [
+      { icon: "package", label: "Recebe produtos para teste" },
+      { icon: "map", label: "Entrega em todo o Brasil" },
+    ],
+  },
+  testimonials: [
+    { quote: "Entrega no prazo, comunicação impecável e o conteúdo performou acima da média da campanha.", brand: "Lumière Cosméticos", stars: 5 },
+    { quote: "Marina entendeu o brief na primeira call. Zero retrabalho, resultado orgânico e verdadeiro.", brand: "Casa Nova Studio", stars: 5 },
+    { quote: "Um dos melhores ROIs de UGC que já tivemos. Já é parceira fixa em todo lançamento.", brand: "Vita Fit Suplementos", stars: 5 },
+    { quote: "Profissionalismo raro: roteiro, gravação e entrega dentro do combinado, sem atrito.", brand: "Verde Skincare", stars: 4 },
+  ],
+  ratingAvg: "4.9",
+  metrics: [
+    { value: "98%", label: "Entregas no prazo" },
+    { value: "97%", label: "Taxa de resposta" },
+    { value: "94%", label: "Taxa de aprovação em 1ª versão" },
+    { value: "48", label: "Jobs concluídos (12 meses)" },
+  ],
+  email: "contato@marinacosta.com.br (placeholder)",
+};
+
+/* ============================================================
+   ÍCONES — biblioteca simples em SVG (linha, 1.6 stroke)
+   ============================================================ */
+const ICON_PATHS = {
+  instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/>',
+  tiktok: '<path d="M14 4v9.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 4c.6 2.4 2.2 4 4.6 4.3"/>',
+  youtube: '<rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10 9.5l5 2.5-5 2.5z"/>',
+  shop: '<path d="M4 8l1.4-4h13.2L20 8"/><rect x="4" y="8" width="16" height="12" rx="1.5"/><path d="M9 12a3 3 0 0 0 6 0"/>',
+  box: '<path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/>',
+  star: '<path d="M12 3l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L12 16.9 6.4 20l1.4-6.2L3 9.5l6.4-.6z"/>',
+  play: '<circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/>',
+  mic: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>',
+  mic2: '<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>',
+  scissors: '<circle cx="6" cy="6" r="2.4"/><circle cx="6" cy="18" r="2.4"/><path d="M8 8l11 10M19 5L8 15"/>',
+  chat: '<path d="M4 5h16v11H9l-5 4V5z"/>',
+  home: '<path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/>',
+  wave: '<circle cx="12" cy="8" r="3"/><path d="M3 15c2 2 4 2 6 0s4-2 6 0 4 2 6 0"/><path d="M3 19c2 2 4 2 6 0s4-2 6 0 4 2 6 0"/>',
+  briefcase: '<rect x="3" y="8" width="18" height="11" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+  ring: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.4"/>',
+  camera: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l1.6-3h4.8L16 7"/><circle cx="12" cy="13.5" r="3.5"/>',
+  tripod: '<path d="M12 3v9"/><path d="M12 12l-6 9M12 12l6 9M12 12l-9 6M12 12l9 6"/><circle cx="12" cy="12" r="2"/>',
+  paw: '<circle cx="7" cy="9" r="1.6"/><circle cx="12" cy="6.5" r="1.6"/><circle cx="17" cy="9" r="1.6"/><path d="M12 12c-3 0-5.5 2.4-5.5 4.8 0 1.6 1.4 2.7 3 2.2.9-.3 1.6-.3 2.5 0 1.6.5 3-.6 3-2.2C15.5 14.4 15 12 12 12z"/>',
+  users: '<circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.6"/><path d="M3.5 19c.5-3.4 3-5.4 5.5-5.4s5 2 5.5 5.4"/><path d="M14.5 14.5c2 .2 3.7 1.9 4 4.5"/>',
+  package: '<path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/><path d="M7.5 5.5l9 5"/>',
+  map: '<path d="M9 4l-6 2v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>',
+  arrow: '<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>',
+};
+function icon(key, size = 18) {
+  const p = ICON_PATHS[key] || ICON_PATHS.star;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+}
+
+/* ============================================================
+   RENDER — lê CREATOR e preenche o DOM (Camada 1 só recebe dados)
+   ============================================================ */
+function fillFields(root = document) {
+  root.querySelectorAll('[data-field]').forEach(el => {
+    const key = el.dataset.field;
+    const map = { name2: 'name' };
+    const val = CREATOR[map[key] || key];
+    if (val) el.textContent = val;
+  });
+}
+
+function renderHero() {
+  document.getElementById('heroEyebrow').innerHTML =
+    `${icon('map',14)} ${CREATOR.location} <span class="dot">·</span> ${CREATOR.age} <span class="dot">·</span> ${CREATOR.languages}`;
+  document.getElementById('heroStats').innerHTML = CREATOR.stats
+    .map(s => `<div class="stat-item"><strong>${s.value}</strong>${s.label}</div>`).join('');
+  document.getElementById('socialIcons').innerHTML = CREATOR.socials
+    .map(s => `<a class="icon-btn" href="#" title="${s.label}" aria-label="${s.label}">${icon(s.key,16)}</a>`).join('');
+  document.getElementById('heroCtaBtn').textContent = `Contratar ${CREATOR.name.split(' ')[0]}`;
+  document.getElementById('ctaMailBtn').innerHTML = `Contratar ${CREATOR.name.split(' ')[0]} ${icon('arrow',15)}`;
+}
+
+function renderCases() {
+  document.getElementById('casesGrid').innerHTML = CREATOR.cases.map(c => `
+    <article class="case-card reveal">
+      <div class="case-thumb tone-${c.tone}" data-label="case pago"></div>
+      <div class="case-body">
+        <p class="case-brand">${c.brand}</p>
+        <p class="case-format">${c.format}</p>
+        <p class="case-metric">${c.metric}</p>
+      </div>
+    </article>`).join('');
+}
+
+function renderAutoral() {
+  document.getElementById('autoralScroll').innerHTML = CREATOR.autoral.map(a => `
+    <div class="autoral-item reveal">
+      <div class="autoral-thumb">
+        <div class="autoral-thumb-inner tone-${a.tone}" data-label="feito por mim"></div>
+      </div>
+      <p class="autoral-title">${a.title}</p>
+      <p class="autoral-type">${a.type}</p>
+    </div>`).join('');
+}
+
+function renderFormatos() {
+  document.getElementById('formatosGrid').innerHTML = CREATOR.formats.map(f => `
+    <div class="formato-item reveal">
+      <div class="formato-icon">${icon(f.icon,16)}</div>
+      <div class="formato-text">
+        <p class="formato-title">${f.title}</p>
+        <p class="formato-desc">${f.desc}</p>
+      </div>
+    </div>`).join('');
+}
+
+function renderEstudio() {
+  const row = i => `<div class="estudio-row">${icon(i.icon,16)}<span>${i.label}</span></div>`;
+  document.getElementById('estudioCenarios').innerHTML = CREATOR.studio.cenarios.map(row).join('');
+  document.getElementById('estudioEquip').innerHTML = CREATOR.studio.equipamentos.map(row).join('');
+  document.getElementById('estudioElenco').innerHTML = CREATOR.studio.elenco.map(row).join('');
+  document.getElementById('estudioLogistica').innerHTML = CREATOR.studio.logistica.map(row).join('');
+}
+
+function renderDepoimentos() {
+  document.getElementById('ratingAgg').innerHTML =
+    `<span class="stars">${'★'.repeat(5)}</span><span>${CREATOR.ratingAvg}</span>`;
+  const initials = (n) => n.split(' ').filter(Boolean).slice(0,2).map(w => w[0]).join('').toUpperCase();
+  document.getElementById('depoimentosGrid').innerHTML = CREATOR.testimonials.map(t => `
+    <article class="dep-card reveal">
+      <p class="dep-quote">${t.quote}</p>
+      <div class="dep-brand">
+        <span class="dep-who"><span class="dep-logo">${initials(t.brand)}</span><span>${t.brand}</span></span>
+        <span class="dep-stars">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</span>
+      </div>
+    </article>`).join('');
+}
+
+function renderMetrics() {
+  document.getElementById('metricsGrid').innerHTML = CREATOR.metrics.map(m => `
+    <div class="metric-tile reveal">
+      <p class="metric-num">${m.value}</p>
+      <p class="metric-label">${m.label}</p>
+    </div>`).join('');
+}
+
+function renderAll() {
+  fillFields();
+  renderHero();
+  renderCases();
+  renderAutoral();
+  renderFormatos();
+  renderEstudio();
+  renderDepoimentos();
+  renderMetrics();
+  document.getElementById('year').textContent = new Date().getFullYear();
+}
+renderAll();
+
+/* Tons dos blocos de placeholder (case/autoral) — gradientes duotone da Camada 1 */
+const style = document.createElement('style');
+style.textContent = `
+  .tone-warm { background: linear-gradient(150deg,#4a3626,#c98a5a); }
+  .tone-cool { background: linear-gradient(150deg,#2a3038,#7c93a8); }
+  .tone-warm2 { background: linear-gradient(150deg,#5a2a26,#e0956a); }
+  .tone-cool2 { background: linear-gradient(150deg,#26343a,#8fb0a8); }
+  .tone-dark { background: linear-gradient(150deg,#141312,#5c5248); }
+`;
+document.head.appendChild(style);
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============================================================
+   TEMA — troca ao vivo (Camada 2)
+   ============================================================ */
+const THEME_KEY = 'webfolio-theme-mockup';
+function applyTheme(name) {
+  document.documentElement.dataset.theme = name;
+  document.querySelectorAll('[data-theme-btn]').forEach(b => b.classList.toggle('active', b.dataset.themeBtn === name));
+  try { localStorage.setItem(THEME_KEY, name); } catch (e) {}
+}
+document.getElementById('themeSwitcher').addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-theme-btn]');
+  if (btn) applyTheme(btn.dataset.themeBtn);
+});
+try {
+  const saved = localStorage.getItem(THEME_KEY);
+  if (saved) applyTheme(saved);
+} catch (e) {}
+</script>
+</body>
+</html>
