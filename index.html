@@ -204,10 +204,9 @@
   .formato-desc { font-size: 0.78rem; color: var(--fg-soft); line-height: 1.4; }
 
   /* ---------- BASTIDORES ---------- */
-  .estudio-card { max-width: 1240px; margin: 0 auto; padding: clamp(28px,4vw,44px); background: var(--card-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+  .estudio-card { width: calc(100% - 2 * clamp(20px,4vw,64px)); max-width: calc(1240px - 2 * clamp(20px,4vw,64px)); margin: 0 auto; padding: clamp(28px,4vw,44px); background: var(--card-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
   .estudio-col-title { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-soft); margin-bottom: 18px; }
-  .estudio-row { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; padding: 9px 0; border-bottom: 1px solid var(--line); }
-  .estudio-row:last-child { border-bottom: none; }
+  .estudio-row { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; padding: 11px 0; }
   .estudio-row svg { width: 16px; height: 16px; color: var(--accent); flex-shrink: 0; }
 
   /* ---------- DEPOIMENTOS ---------- */
