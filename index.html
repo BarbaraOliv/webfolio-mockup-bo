@@ -9,11 +9,11 @@
   seletor de TEMA flutuante no canto da tela, que troca cor + fontes + fundo.
   Pra gerar o webfólio de outro creator: troca o objeto CREATOR e escolhe o tema.
 -->
-<html lang="pt-BR" data-theme="editorial">
+<html lang="es" data-theme="editorial">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marina Costa — Webfólio Creator</title>
+<title>Marina Costa — Webfolio Creator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -298,7 +298,7 @@
       <li><a href="#marcas">Marcas</a></li>
       <li><a href="#formatos">Formatos</a></li>
       <li><a href="#bastidores">Bastidores</a></li>
-      <li><a href="#contato">Contato</a></li>
+      <li><a href="#contato">Contacto</a></li>
     </ul>
     <a class="btn-nav" href="#contato">Contratar</a>
   </div>
@@ -308,7 +308,7 @@
   <div class="hero-grid">
     <div class="hero-portrait reveal">
       <div class="portrait-block">
-        <span class="portrait-label">foto da creator · slot substituível</span>
+        <span class="portrait-label">foto de la creator · slot reemplazable</span>
       </div>
     </div>
     <div class="hero-copy">
@@ -339,7 +339,7 @@
 <section id="marcas" class="section">
   <div class="section-head reveal">
     <span class="section-index">02</span>
-    <h2>O que as marcas dizem</h2>
+    <h2>Lo que dicen las marcas</h2>
     <div class="rating-agg" id="ratingAgg"></div>
   </div>
   <div class="depoimentos-grid" id="depoimentosGrid"></div>
@@ -360,15 +360,15 @@
   </div>
   <div class="estudio-card reveal">
     <div class="estudio-col">
-      <p class="estudio-col-title">Cenários</p>
+      <p class="estudio-col-title">Escenarios</p>
       <div id="estudioCenarios"></div>
     </div>
     <div class="estudio-col">
-      <p class="estudio-col-title">Equipamentos</p>
+      <p class="estudio-col-title">Equipamiento</p>
       <div id="estudioEquip"></div>
     </div>
     <div class="estudio-col">
-      <p class="estudio-col-title">Elenco de apoio</p>
+      <p class="estudio-col-title">Elenco de apoyo</p>
       <div id="estudioElenco"></div>
     </div>
   </div>
@@ -377,21 +377,21 @@
 <section class="section">
   <div class="section-head reveal">
     <span class="section-index">05</span>
-    <h2>Desempenho</h2>
+    <h2>Desempeño</h2>
   </div>
   <div class="metrics-grid" id="metricsGrid"></div>
 </section>
 
 <section id="contato" class="section cta-final reveal">
-  <h2>Vamos trabalhar juntos?</h2>
-  <a class="btn-primary large" href="#" id="ctaMailBtn">Contratar Marina</a>
+  <h2>¿Trabajamos juntos?</h2>
+  <a class="btn-primary large" href="#" id="ctaMailBtn">Contratar a Marina</a>
   <p class="contact-email" data-field="email"></p>
 </section>
 
 <footer class="footer">
   <div class="wrap">
-    <p>© <span id="year"></span> <span data-field="name2"></span> · Template webfólio — conteúdo fictício para demonstração</p>
-    <p>Camada 1: estrutura fixa · Camada 2: conteúdo &amp; tema por creator</p>
+    <p>© <span id="year"></span> <span data-field="name2"></span> · Template webfolio — contenido ficticio para demostración</p>
+    <p>Capa 1: estructura fija · Capa 2: contenido &amp; tema por creator</p>
   </div>
 </footer>
 
@@ -415,63 +415,63 @@ const CREATOR = {
   headline: "Creator UGC",
   headlineNiche: "Lifestyle & Beauty",
   location: "São Paulo, BR",
-  age: "28 anos",
+  age: "28 años",
   languages: "PT · EN · ES",
   stats: [
-    { value: "48", label: "jobs entregues" },
-    { value: "4.9★", label: "avaliação média" },
-    { value: "2h", label: "tempo de resposta" },
-    { value: "14 sem.", label: "criando na Publi Secrets" },
+    { value: "48", label: "jobs entregados" },
+    { value: "4.9★", label: "valoración media" },
+    { value: "2h", label: "tiempo de respuesta" },
+    { value: "14 sem.", label: "creando en Publi Secrets" },
   ],
   socials: [
     { key: "instagram", label: "Instagram" },
     { key: "tiktok", label: "TikTok" },
     { key: "youtube", label: "YouTube" },
-    { key: "shop", label: "Loja" },
+    { key: "shop", label: "Tienda" },
   ],
   cases: [
-    { brand: "Lumière Cosméticos", format: "Reels de produto", metric: "+120k views", tone: "warm" },
-    { brand: "Casa Nova Studio", format: "Unboxing", metric: "8.4% engajamento", tone: "cool" },
-    { brand: "Vita Fit Suplementos", format: "Depoimento em vídeo", metric: "+64k views", tone: "warm2" },
+    { brand: "Lumière Cosméticos", format: "Reels de producto", metric: "+120k views", tone: "warm" },
+    { brand: "Casa Nova Studio", format: "Unboxing", metric: "8.4% de engagement", tone: "cool" },
+    { brand: "Vita Fit Suplementos", format: "Testimonio en video", metric: "+64k views", tone: "warm2" },
   ],
   formats: [
-    { icon: "box", title: "Unboxing", desc: "Abertura e primeira impressão do produto, com reação genuína." },
-    { icon: "star", title: "Review", desc: "Avaliação detalhada de uso, prós e contras, comparação de mercado." },
-    { icon: "play", title: "Tutorial", desc: "Passo a passo de uso ou aplicação, formato educativo." },
-    { icon: "mic", title: "Voz off", desc: "Narração profissional para vídeos institucionais e VSLs." },
-    { icon: "scissors", title: "Edição", desc: "Corte, ritmo e legendas prontos para publicação direta." },
-    { icon: "chat", title: "Depoimento", desc: "Testemunho autêntico em formato de conversa com a câmera." },
+    { icon: "box", title: "Unboxing", desc: "Apertura y primera impresión del producto, con reacción genuina." },
+    { icon: "star", title: "Review", desc: "Evaluación detallada de uso, pros y contras, comparación de mercado." },
+    { icon: "play", title: "Tutorial", desc: "Paso a paso de uso o aplicación, formato educativo." },
+    { icon: "mic", title: "Voz en off", desc: "Narración profesional para videos institucionales y VSLs." },
+    { icon: "scissors", title: "Edición", desc: "Corte, ritmo y subtítulos listos para publicación directa." },
+    { icon: "chat", title: "Testimonio", desc: "Testimonio auténtico en formato de conversación con la cámara." },
   ],
   studio: {
     cenarios: [
-      { icon: "home", label: "Casa (sala, cozinha, quarto)" },
-      { icon: "wave", label: "Praia / área externa" },
-      { icon: "briefcase", label: "Escritório / estúdio" },
+      { icon: "home", label: "Casa (sala, cocina, dormitorio)" },
+      { icon: "wave", label: "Playa / exteriores" },
+      { icon: "briefcase", label: "Oficina / estudio" },
     ],
     equipamentos: [
-      { icon: "ring", label: "Ringlight profissional" },
-      { icon: "camera", label: "Câmera mirrorless 4K" },
-      { icon: "mic2", label: "Microfone lapela sem fio" },
-      { icon: "tripod", label: "Tripé & estabilizador" },
+      { icon: "ring", label: "Ringlight profesional" },
+      { icon: "camera", label: "Cámara mirrorless 4K" },
+      { icon: "mic2", label: "Micrófono de solapa inalámbrico" },
+      { icon: "tripod", label: "Trípode y estabilizador" },
     ],
     elenco: [
-      { icon: "paw", label: "Pet (golden retriever)" },
-      { icon: "users", label: "Participação da família" },
+      { icon: "paw", label: "Mascota (golden retriever)" },
+      { icon: "users", label: "Participación de la familia" },
     ],
   },
   testimonials: [
-    { quote: "Entrega no prazo, comunicação impecável e o conteúdo performou acima da média da campanha.", brand: "Lumière Cosméticos", stars: 5 },
-    { quote: "Marina entendeu o brief na primeira call. Zero retrabalho, resultado orgânico e verdadeiro.", brand: "Casa Nova Studio", stars: 5 },
-    { quote: "Um dos melhores ROIs de UGC que já tivemos. Já é parceira fixa em todo lançamento.", brand: "Vita Fit Suplementos", stars: 5 },
-    { quote: "Profissionalismo raro: roteiro, gravação e entrega dentro do combinado, sem atrito.", brand: "Verde Skincare", stars: 4 },
+    { quote: "Entrega a tiempo, comunicación impecable y el contenido rindió por encima del promedio de la campaña.", brand: "Lumière Cosméticos", stars: 5 },
+    { quote: "Marina entendió el brief en la primera call. Cero retrabajo, resultado orgánico y verdadero.", brand: "Casa Nova Studio", stars: 5 },
+    { quote: "Uno de los mejores ROI de UGC que tuvimos. Ya es partner fija en cada lanzamiento.", brand: "Vita Fit Suplementos", stars: 5 },
+    { quote: "Profesionalismo raro: guion, grabación y entrega dentro de lo acordado, sin fricción.", brand: "Verde Skincare", stars: 4 },
   ],
   ratingAvg: "4.9",
   metrics: [
-    { value: "98%", label: "Entregas no prazo" },
-    { value: "97%", label: "Taxa de resposta" },
-    { value: "94%", label: "Taxa de aprovação em 1ª versão" },
+    { value: "98%", label: "Entregas a tiempo" },
+    { value: "97%", label: "Tasa de respuesta" },
+    { value: "94%", label: "Tasa de aprobación en 1ª versión" },
   ],
-  email: "contato@marinacosta.com.br (placeholder)",
+  email: "contacto@marinacosta.com (placeholder)",
 };
 
 /* ============================================================
@@ -525,8 +525,8 @@ function renderHero() {
     .map(s => `<div class="stat-item"><strong>${s.value}</strong>${s.label}</div>`).join('');
   document.getElementById('socialIcons').innerHTML = CREATOR.socials
     .map(s => `<a class="icon-btn" href="#" title="${s.label}" aria-label="${s.label}">${icon(s.key,16)}</a>`).join('');
-  document.getElementById('heroCtaBtn').textContent = `Contratar ${CREATOR.name.split(' ')[0]}`;
-  document.getElementById('ctaMailBtn').innerHTML = `Contratar ${CREATOR.name.split(' ')[0]} ${icon('arrow',15)}`;
+  document.getElementById('heroCtaBtn').textContent = `Contratar a ${CREATOR.name.split(' ')[0]}`;
+  document.getElementById('ctaMailBtn').innerHTML = `Contratar a ${CREATOR.name.split(' ')[0]} ${icon('arrow',15)}`;
 }
 
 function renderCases() {
