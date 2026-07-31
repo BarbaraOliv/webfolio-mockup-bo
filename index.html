@@ -190,18 +190,6 @@
   .case-format { font-family: var(--font-display); font-size: 1rem; color: var(--fg-soft); margin-bottom: 14px; }
   .case-metric { font-family: var(--font-display); font-size: 1.2rem; color: var(--accent); font-weight: 500; padding-top: 12px; border-top: 1px solid var(--line); }
 
-  /* ---------- VITRINE AUTORAL (scroll horizontal) ---------- */
-  .autoral-scroll { display: flex; gap: 22px; overflow-x: auto; padding: 4px clamp(20px,4vw,64px) 20px; scroll-snap-type: x proximity; scrollbar-width: thin; }
-  .autoral-scroll::-webkit-scrollbar { height: 5px; }
-  .autoral-scroll::-webkit-scrollbar-thumb { background: var(--line); border-radius: 10px; }
-  .autoral-item { flex: 0 0 clamp(210px,26vw,300px); scroll-snap-align: start; }
-  .autoral-thumb { aspect-ratio: 9/16; border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: var(--shadow-card); -webkit-mask-image: -webkit-radial-gradient(white, black); mask-image: radial-gradient(white, black); }
-  .autoral-thumb-inner { position: absolute; inset: 0; transition: transform .4s cubic-bezier(.16,1,.3,1); }
-  .autoral-thumb:hover .autoral-thumb-inner { transform: scale(1.08) rotate(-0.6deg); }
-  .autoral-thumb-inner::after { content: attr(data-label); position: absolute; left: 12px; bottom: 12px; font-size: 0.64rem; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 100px; }
-  .autoral-title { margin-top: 12px; font-size: 0.9rem; font-weight: 500; }
-  .autoral-type { font-size: 0.78rem; color: var(--fg-soft); }
-
   /* ---------- FORMATOS ---------- */
   .formatos-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
   .formato-item { background: var(--card-bg); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 18px 20px; display: flex; align-items: center; gap: 14px; transition: border-color .3s, transform .3s; }
@@ -303,8 +291,7 @@
   <div class="nav-inner">
     <a class="nav-logo" href="#top" data-field="navName">—</a>
     <ul class="nav-links">
-      <li><a href="#portfolio">Portfólio</a></li>
-      <li><a href="#autoral">Autoral</a></li>
+      <li><a href="#portfolio">Trabajos</a></li>
       <li><a href="#marcas">Marcas</a></li>
       <li><a href="#formatos">Formatos</a></li>
       <li><a href="#bastidores">Bastidores</a></li>
@@ -337,24 +324,15 @@
 <section id="portfolio" class="section">
   <div class="section-head reveal">
     <span class="section-index">01</span>
-    <h2>Portfólio profissional</h2>
+    <h2>Trabajos</h2>
     <p class="section-note">Trabalhos entregues para marcas parceiras.</p>
   </div>
   <div class="cases-grid" id="casesGrid"></div>
 </section>
 
-<section id="autoral" class="section">
-  <div class="section-head reveal">
-    <span class="section-index">02</span>
-    <h2>Vitrine autoral</h2>
-    <p class="section-note">Conteúdo próprio</p>
-  </div>
-  <div class="autoral-scroll" id="autoralScroll"></div>
-</section>
-
 <section id="marcas" class="section">
   <div class="section-head reveal">
-    <span class="section-index">03</span>
+    <span class="section-index">02</span>
     <h2>O que as marcas dizem</h2>
     <div class="rating-agg" id="ratingAgg"></div>
   </div>
@@ -363,7 +341,7 @@
 
 <section id="formatos" class="section">
   <div class="section-head reveal">
-    <span class="section-index">04</span>
+    <span class="section-index">03</span>
     <h2>Formatos que entrego</h2>
   </div>
   <div class="formatos-grid" id="formatosGrid"></div>
@@ -371,7 +349,7 @@
 
 <section id="bastidores" class="section">
   <div class="section-head reveal">
-    <span class="section-index">05</span>
+    <span class="section-index">04</span>
     <h2>Bastidores</h2>
   </div>
   <div class="estudio-card reveal">
@@ -396,7 +374,7 @@
 
 <section class="section">
   <div class="section-head reveal">
-    <span class="section-index">06</span>
+    <span class="section-index">05</span>
     <h2>Desempenho</h2>
   </div>
   <div class="metrics-grid" id="metricsGrid"></div>
@@ -456,12 +434,6 @@ const CREATOR = {
     { brand: "Nômade Eletrônicos", format: "Review de produto", metric: "3.2x CTR médio", tone: "dark" },
     { brand: "Sabor de Casa", format: "Tutorial culinário", metric: "+95k views", tone: "cool2" },
     { brand: "Verde Skincare", format: "Antes & depois", metric: "9.1% engajamento", tone: "warm" },
-  ],
-  autoral: [
-    { title: "Rotina de skincare noturna", type: "Reel autoral", tone: "warm" },
-    { title: "Organizando o closet cápsula", type: "Story série", tone: "cool" },
-    { title: "5 receitas de domingo", type: "Vídeo longo", tone: "dark" },
-    { title: "Look do dia — inverno", type: "Reel autoral", tone: "cool2" },
   ],
   formats: [
     { icon: "box", title: "Unboxing", desc: "Abertura e primeira impressão do produto, com reação genuína." },
@@ -566,24 +538,13 @@ function renderHero() {
 function renderCases() {
   document.getElementById('casesGrid').innerHTML = CREATOR.cases.map(c => `
     <article class="case-card reveal">
-      <div class="case-thumb tone-${c.tone}" data-label="case pago"></div>
+      <div class="case-thumb tone-${c.tone}" data-label="video"></div>
       <div class="case-body">
         <p class="case-brand">${c.brand}</p>
         <p class="case-format">${c.format}</p>
         <p class="case-metric">${c.metric}</p>
       </div>
     </article>`).join('');
-}
-
-function renderAutoral() {
-  document.getElementById('autoralScroll').innerHTML = CREATOR.autoral.map(a => `
-    <div class="autoral-item reveal">
-      <div class="autoral-thumb">
-        <div class="autoral-thumb-inner tone-${a.tone}" data-label="feito por mim"></div>
-      </div>
-      <p class="autoral-title">${a.title}</p>
-      <p class="autoral-type">${a.type}</p>
-    </div>`).join('');
 }
 
 function renderFormatos() {
@@ -631,7 +592,6 @@ function renderAll() {
   fillFields();
   renderHero();
   renderCases();
-  renderAutoral();
   renderFormatos();
   renderEstudio();
   renderDepoimentos();
@@ -640,7 +600,7 @@ function renderAll() {
 }
 renderAll();
 
-/* Tons dos blocos de placeholder (case/autoral) — gradientes duotone da Camada 1 */
+/* Tons dos blocos de placeholder dos vídeos — gradientes duotone da Camada 1 */
 const style = document.createElement('style');
 style.textContent = `
   .tone-warm { background: linear-gradient(150deg,#4a3626,#c98a5a); }
