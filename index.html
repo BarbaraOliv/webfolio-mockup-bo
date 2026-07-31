@@ -182,7 +182,10 @@
   .cases-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
   .case-card { background: var(--card-bg); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); transition: transform .4s cubic-bezier(.16,1,.3,1); }
   .case-card:hover { transform: translateY(-6px); }
-  .case-card:nth-child(3n+2) { margin-top: 44px; }
+  .cases-arrows { margin-left: auto; align-self: center; display: flex; gap: 10px; }
+  .cases-arrow { width: 38px; height: 38px; border-radius: 100px; border: 1px solid var(--line); background: var(--card-bg); color: var(--fg-soft); display: flex; align-items: center; justify-content: center; }
+  .cases-arrow.is-off { opacity: 0.3; }
+  .cases-arrow svg { width: 15px; height: 15px; }
   .case-thumb { aspect-ratio: 4/5; position: relative; overflow: hidden; }
   .case-thumb::after { content: attr(data-label); position: absolute; left: 14px; bottom: 14px; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.85); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 100px; backdrop-filter: blur(4px); }
   .case-body { padding: 18px 20px 22px; }
@@ -201,7 +204,7 @@
   .formato-desc { font-size: 0.78rem; color: var(--fg-soft); line-height: 1.4; }
 
   /* ---------- BASTIDORES ---------- */
-  .estudio-card { max-width: 1240px; margin: 0 auto; padding: clamp(28px,4vw,44px); background: var(--card-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; }
+  .estudio-card { max-width: 1240px; margin: 0 auto; padding: clamp(28px,4vw,44px); background: var(--card-bg); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
   .estudio-col-title { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-soft); margin-bottom: 18px; }
   .estudio-row { display: flex; align-items: center; gap: 10px; font-size: 0.88rem; padding: 9px 0; border-bottom: 1px solid var(--line); }
   .estudio-row:last-child { border-bottom: none; }
@@ -221,8 +224,9 @@
   .dep-stars { color: var(--accent); letter-spacing: 1px; }
 
   /* ---------- DESEMPENHO ---------- */
-  .metrics-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-  .metric-tile { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 34px 26px; }
+  .metrics-grid { max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); display: grid; grid-template-columns: repeat(3,1fr); }
+  .metric-tile { border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 34px 26px; }
+  .metric-tile:first-child { border-left: 1px solid var(--line); }
   .metric-num { font-family: var(--font-display); font-size: clamp(2.2rem,4vw,3rem); color: var(--accent); line-height: 1; margin-bottom: 10px; }
   .metric-label { font-size: 0.82rem; color: var(--fg-soft); }
 
@@ -325,7 +329,10 @@
   <div class="section-head reveal">
     <span class="section-index">01</span>
     <h2>Trabajos</h2>
-    <p class="section-note">Trabalhos entregues para marcas parceiras.</p>
+    <div class="cases-arrows" aria-hidden="true">
+      <span class="cases-arrow is-off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></span>
+      <span class="cases-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></span>
+    </div>
   </div>
   <div class="cases-grid" id="casesGrid"></div>
 </section>
@@ -364,10 +371,6 @@
     <div class="estudio-col">
       <p class="estudio-col-title">Elenco de apoio</p>
       <div id="estudioElenco"></div>
-    </div>
-    <div class="estudio-col">
-      <p class="estudio-col-title">Logística</p>
-      <div id="estudioLogistica"></div>
     </div>
   </div>
 </section>
@@ -431,9 +434,6 @@ const CREATOR = {
     { brand: "Lumière Cosméticos", format: "Reels de produto", metric: "+120k views", tone: "warm" },
     { brand: "Casa Nova Studio", format: "Unboxing", metric: "8.4% engajamento", tone: "cool" },
     { brand: "Vita Fit Suplementos", format: "Depoimento em vídeo", metric: "+64k views", tone: "warm2" },
-    { brand: "Nômade Eletrônicos", format: "Review de produto", metric: "3.2x CTR médio", tone: "dark" },
-    { brand: "Sabor de Casa", format: "Tutorial culinário", metric: "+95k views", tone: "cool2" },
-    { brand: "Verde Skincare", format: "Antes & depois", metric: "9.1% engajamento", tone: "warm" },
   ],
   formats: [
     { icon: "box", title: "Unboxing", desc: "Abertura e primeira impressão do produto, com reação genuína." },
@@ -459,10 +459,6 @@ const CREATOR = {
       { icon: "paw", label: "Pet (golden retriever)" },
       { icon: "users", label: "Participação da família" },
     ],
-    logistica: [
-      { icon: "package", label: "Recebe produtos para teste" },
-      { icon: "map", label: "Entrega em todo o Brasil" },
-    ],
   },
   testimonials: [
     { quote: "Entrega no prazo, comunicação impecável e o conteúdo performou acima da média da campanha.", brand: "Lumière Cosméticos", stars: 5 },
@@ -475,7 +471,6 @@ const CREATOR = {
     { value: "98%", label: "Entregas no prazo" },
     { value: "97%", label: "Taxa de resposta" },
     { value: "94%", label: "Taxa de aprovação em 1ª versão" },
-    { value: "48", label: "Jobs concluídos (12 meses)" },
   ],
   email: "contato@marinacosta.com.br (placeholder)",
 };
@@ -563,7 +558,6 @@ function renderEstudio() {
   document.getElementById('estudioCenarios').innerHTML = CREATOR.studio.cenarios.map(row).join('');
   document.getElementById('estudioEquip').innerHTML = CREATOR.studio.equipamentos.map(row).join('');
   document.getElementById('estudioElenco').innerHTML = CREATOR.studio.elenco.map(row).join('');
-  document.getElementById('estudioLogistica').innerHTML = CREATOR.studio.logistica.map(row).join('');
 }
 
 function renderDepoimentos() {
