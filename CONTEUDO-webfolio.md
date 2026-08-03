@@ -1,18 +1,24 @@
 # O QUE TEM NO WEBFÓLIO
 
-O webfólio é a página que o creator recebe pronta. Quem lê é uma marca decidindo se contrata ele.
+O webfólio é a página que a creator recebe pronta. Quem lê é uma marca decidindo se contrata.
 
-Abaixo está tudo que essa página carrega. **Não há ordem definida** — os grupos abaixo são só para não virar uma lista solta de 40 itens. Onde cada coisa entra, o quanto aparece e o desenho são livres.
+Abaixo está tudo que essa página carrega. **Não há ordem definida** — os grupos abaixo existem só para o documento não virar uma lista solta de quarenta itens. Onde cada coisa entra, o quanto aparece e o desenho são livres.
 
 O conteúdo de exemplo é de uma creator fictícia, a Marina Costa. Serve para mostrar o tipo e o comprimento de cada informação.
 
+## Duas coisas que este documento ainda não resolve
+
+**Falta a camada de edição de copy.** Os textos abaixo são primeira versão. Eles servem para dizer que tipo de informação entra em cada lugar — não são a frase final. Lapidar a copy é um trabalho à parte, ainda não feito.
+
+**Falta definir a página de quem acabou de começar.** Todo o exemplo abaixo é de uma creator com estrada: marcas no portfólio, depoimentos, números altos, meses de plataforma. Quem ativa hoje não tem nenhuma dessas coisas. A página não pode nascer vazia, porque uma página vazia comunica exatamente o contrário do que a creator precisa comunicar para ser contratada. O que entra no lugar de cada informação que ainda não existe é uma decisão em aberto.
+
 ---
 
-## Quem ele é
+## Quem é
 
-- Foto dele
+- Foto
 - Nome: Marina Costa
-- O que é: Creator UGC
+- O que faz: Creator UGC
 - Nicho em que cria: Lifestyle & Beauty
 - Cidade e país: São Paulo, BR
 - Idade: 28 anos
@@ -20,7 +26,7 @@ O conteúdo de exemplo é de uma creator fictícia, a Marina Costa. Serve para m
 
 ---
 
-## Trabalho que ele já entregou
+## Trabalhos entregues
 
 Três vídeos feitos para marcas. Cada um vem com a marca, o tipo de trabalho e o resultado que deu — resultado é número, não adjetivo.
 
@@ -32,7 +38,7 @@ Os vídeos são verticais, porque é assim que conteúdo de creator é gravado.
 
 ---
 
-## O que as marcas falaram dele
+## O que as marcas falaram
 
 Nota média: 4.9
 
@@ -45,7 +51,7 @@ Quatro depoimentos, cada um com o nome da marca que falou e quantas estrelas ela
 
 ---
 
-## O que ele sabe fazer
+## O que sabe fazer
 
 Seis tipos de trabalho que a marca pode contratar, cada um com uma linha explicando:
 
@@ -58,7 +64,7 @@ Seis tipos de trabalho que a marca pode contratar, cada um com uma linha explica
 
 ---
 
-## A estrutura que ele tem para gravar
+## Estrutura para gravar
 
 Três listas curtas. O tamanho de cada uma muda de creator para creator.
 
@@ -75,14 +81,14 @@ Três listas curtas. O tamanho de cada uma muda de creator para creator.
 - Microfone lapela sem fio
 - Tripé e estabilizador
 
-**Quem aparece com ele**
+**Quem aparece junto**
 
 - Pet (golden retriever)
 - Participação da família
 
 ---
 
-## Os números dele
+## Os números
 
 Sete números no total, todos curtos, cada um com um rótulo:
 
@@ -96,10 +102,10 @@ Sete números no total, todos curtos, cada um com um rótulo:
 
 ---
 
-## Como falar com ele
+## Como entrar em contato
 
 - E-mail: contato@marinacosta.com
-- Links de rede social: Instagram, TikTok, YouTube e a loja dele
+- Links de rede social: Instagram, TikTok, YouTube e a loja
 - Um botão de contratar, escrito com o primeiro nome: "Contratar Marina"
 
 ---
@@ -107,14 +113,12 @@ Sete números no total, todos curtos, cada um com um rótulo:
 ## Textos que não mudam de creator para creator
 
 - Convite de fechamento: "Vamos trabalhar juntos?"
-- Rodapé: o ano, o nome do creator e a nota de que o conteúdo é fictício
+- Rodapé: o ano, o nome da creator e a nota de que o conteúdo é fictício
 - A palavra "video" sobre cada miniatura de vídeo
-- Um seletor de tema com três opções de cor, para o creator escolher a aparência
+- Um seletor de tema com três opções de cor, para a creator escolher a aparência
 
 ---
 
-## Duas coisas sobre o conteúdo
+## Uma última coisa sobre o conteúdo
 
-**Quase tudo aqui muda de creator para creator** — nome, números, marcas, depoimentos, listas. O que fica igual é a natureza da informação, não o valor dela.
-
-**Um creator começando tem menos coisa.** Menos trabalho entregue, nenhum depoimento, número mais baixo, lista com um item. O conteúdo precisa fazer sentido cheio e vazio.
+**Quase tudo aqui muda de creator para creator** — nome, números, marcas, depoimentos, listas. O que fica igual é a natureza da informação, nunca o valor dela.
