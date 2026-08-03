@@ -1,61 +1,42 @@
-# WEBFÓLIO DO CREATOR — o conteúdo
+# O QUE TEM NO WEBFÓLIO
 
-Página de apresentação de um creator de conteúdo, entregue pronta pela plataforma. Quem lê é uma marca decidindo se contrata esse creator.
+O webfólio é a página que o creator recebe pronta. Quem lê é uma marca decidindo se contrata ele.
 
-Abaixo está o conteúdo escrito, seção por seção, na ordem em que aparece. O visual é livre.
+Abaixo está tudo que essa página carrega. **Não há ordem definida** — os grupos abaixo são só para não virar uma lista solta de 40 itens. Onde cada coisa entra, o quanto aparece e o desenho são livres.
 
-*O conteúdo de exemplo é de uma creator fictícia, a Marina Costa. Serve para mostrar o comprimento real de cada texto — nada aqui é dado de pessoa real.*
-
----
-
-## Menu do topo
-
-Trabalhos · Marcas · Formatos · Bastidores · Contato
-
-Botão: Contratar
+O conteúdo de exemplo é de uma creator fictícia, a Marina Costa. Serve para mostrar o tipo e o comprimento de cada informação.
 
 ---
 
-## 1. Abertura
+## Quem ele é
 
-Foto do creator, em retrato.
-
-Marina Costa
-
-Creator UGC · Lifestyle & Beauty
-
-São Paulo, BR · 28 anos · PT · EN · ES
-
-Quatro números de destaque:
-
-- 48 — jobs entregues
-- 4.9 estrelas — avaliação média
-- 2h — tempo de resposta
-- 14 semanas — criando na Publi Secrets
-
-Botão: Contratar Marina
-
-Links de rede social: Instagram · TikTok · YouTube · Loja
+- Foto dele
+- Nome: Marina Costa
+- O que é: Creator UGC
+- Nicho em que cria: Lifestyle & Beauty
+- Cidade e país: São Paulo, BR
+- Idade: 28 anos
+- Idiomas que fala: português, inglês, espanhol
 
 ---
 
-## 2. Trabalhos
+## Trabalho que ele já entregou
 
-Três vídeos entregues para marcas. Cada um tem a marca, o formato e o resultado que deu.
+Três vídeos feitos para marcas. Cada um vem com a marca, o tipo de trabalho e o resultado que deu — resultado é número, não adjetivo.
 
 - Lumière Cosméticos — Reels de produto — +120k views
 - Casa Nova Studio — Unboxing — 8.4% de engajamento
 - Vita Fit Suplementos — Depoimento em vídeo — +64k views
 
-Os vídeos são verticais. Sobre cada miniatura aparece a palavra *video*.
+Os vídeos são verticais, porque é assim que conteúdo de creator é gravado.
 
 ---
 
-## 3. O que as marcas dizem
+## O que as marcas falaram dele
 
 Nota média: 4.9
 
-Quatro depoimentos, cada um com a marca que falou e quantas estrelas deu:
+Quatro depoimentos, cada um com o nome da marca que falou e quantas estrelas ela deu:
 
 - "Entrega no prazo, comunicação impecável e o conteúdo performou acima da média da campanha." — Lumière Cosméticos, 5 estrelas
 - "Marina entendeu o brief na primeira call. Zero retrabalho, resultado orgânico e verdadeiro." — Casa Nova Studio, 5 estrelas
@@ -64,9 +45,9 @@ Quatro depoimentos, cada um com a marca que falou e quantas estrelas deu:
 
 ---
 
-## 4. Formatos que entrego
+## O que ele sabe fazer
 
-Seis formatos, cada um com uma linha explicando:
+Seis tipos de trabalho que a marca pode contratar, cada um com uma linha explicando:
 
 - **Unboxing** — Abertura e primeira impressão do produto, com reação genuína.
 - **Review** — Avaliação detalhada de uso, prós e contras, comparação de mercado.
@@ -77,60 +58,63 @@ Seis formatos, cada um com uma linha explicando:
 
 ---
 
-## 5. Bastidores
+## A estrutura que ele tem para gravar
 
-Três listas. O tamanho de cada uma muda por creator.
+Três listas curtas. O tamanho de cada uma muda de creator para creator.
 
-**Cenários**
+**Onde grava**
 
 - Casa (sala, cozinha, quarto)
 - Praia / área externa
 - Escritório / estúdio
 
-**Equipamentos**
+**Com que equipamento**
 
 - Ringlight profissional
 - Câmera mirrorless 4K
 - Microfone lapela sem fio
 - Tripé e estabilizador
 
-**Elenco de apoio**
+**Quem aparece com ele**
 
 - Pet (golden retriever)
 - Participação da família
 
 ---
 
-## 6. Desempenho
+## Os números dele
 
-Três números:
+Sete números no total, todos curtos, cada um com um rótulo:
 
-- 98% — Entregas no prazo
-- 97% — Taxa de resposta
-- 94% — Taxa de aprovação em 1ª versão
-
----
-
-## 7. Fechamento
-
-Vamos trabalhar juntos?
-
-Botão: Contratar Marina
-
-contato@marinacosta.com
+- 48 — jobs entregues
+- 4.9 estrelas — avaliação média
+- 2h — tempo de resposta
+- 14 semanas — criando na Publi Secrets
+- 98% — entregas no prazo
+- 97% — taxa de resposta
+- 94% — aprovação na primeira versão
 
 ---
 
-## Rodapé
+## Como falar com ele
 
-© [ano] [nome do creator] · Template webfólio — conteúdo fictício para demonstração
+- E-mail: contato@marinacosta.com
+- Links de rede social: Instagram, TikTok, YouTube e a loja dele
+- Um botão de contratar, escrito com o primeiro nome: "Contratar Marina"
 
 ---
 
-## Três coisas que valem saber
+## Textos que não mudam de creator para creator
 
-**A ordem das seções é a do argumento:** primeiro a prova (trabalho entregue), depois a opinião de quem pagou, o que ele sabe fazer, com que estrutura grava, e por fim confiabilidade e a chamada.
+- Convite de fechamento: "Vamos trabalhar juntos?"
+- Rodapé: o ano, o nome do creator e a nota de que o conteúdo é fictício
+- A palavra "video" sobre cada miniatura de vídeo
+- Um seletor de tema com três opções de cor, para o creator escolher a aparência
 
-**Todo texto marcado com nome, número ou marca muda por creator.** O desenho precisa aguentar nome comprido, lista com dois itens e lista com cinco.
+---
 
-**A página final fica em espanhol neutro** — o público do programa é hispano-falante. Este documento está em português só para a leitura da equipe.
+## Duas coisas sobre o conteúdo
+
+**Quase tudo aqui muda de creator para creator** — nome, números, marcas, depoimentos, listas. O que fica igual é a natureza da informação, não o valor dela.
+
+**Um creator começando tem menos coisa.** Menos trabalho entregue, nenhum depoimento, número mais baixo, lista com um item. O conteúdo precisa fazer sentido cheio e vazio.
